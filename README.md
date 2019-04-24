@@ -1,6 +1,7 @@
 #detach_luns_from_host
 
 Note : please ensure that datastores corresponding to those LUNs are unmounted from the ESXis
+      
        Please connect to the vCenter server using the Connect-VIserver <vCenter FQDN> 
 
 Usage : DetachSpecificLunsOnSpecificHost.ps1
