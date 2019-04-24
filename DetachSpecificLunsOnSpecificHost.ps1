@@ -19,15 +19,16 @@ do
 	  }
   }
 until($DeviceAnswer) 
+
 $devicelist = get-content $DeviceAnswer
 $vmhost = get-vmhost $hostanswer
 $hostview = $vmhost | get-view
 $StorageSys = Get-View $HostView.ConfigManager.StorageSystem
 $devices = $StorageSys.StorageDeviceInfo.ScsiLun
 foreach($CanonicalName in $devicelist)
-  {
+{
   Foreach ($device in $devices) 
-    {
+  {
 	if ($device.canonicalName -eq $CanonicalName) 
 	  {
 		$LunUUID = $Device.Uuid
@@ -35,6 +36,6 @@ foreach($CanonicalName in $devicelist)
 		Write-host "LUN UUID is $($LunUUID)"
         $StorageSys.DetachScsiLun($LunUUID);
 	  }
-	}
+   }
   
   }
